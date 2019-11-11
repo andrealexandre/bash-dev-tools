@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 function git-branch-cleanup() {
     git remote prune origin && \

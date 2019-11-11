@@ -1,3 +1,9 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
-source tools/git_includes
+echo -n 'loading andrealexandre/zsh-dev-tools... ';
+ts=$(date +%s%N);
+
+source tools/git_includes;
+
+tt=$((($(date +%s%N) - $ts)/1000000));
+echo "loaded in: $tt ms";
