@@ -13,3 +13,8 @@ function git-rebase-with-master() {
         git checkout $branch && \
         git rebase master
 }
+
+if [[ -z $(git config --global alias.xlog) ]] then;
+    echo 'setting git alias.xlog';
+    git config --global alias.xlog 'log --all --decorate --oneline --graph';
+fi;
