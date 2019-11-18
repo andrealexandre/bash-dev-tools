@@ -1,9 +1,23 @@
 #!/bin/bash
 
-echo -n 'loading andrealexandre/zsh-dev-tools... ';
-ts=$(date +%s%N);
+####
+# Begin
+####
+old_dir=`pwd`
+cd "$(dirname "$0")"
 
+echo -n "Loading 'andrealexandre/bash-dev-tools'... ";
+ts=$(date +%s);
+
+####
+# Imports
+####
 source tools/git_includes;
 
-tt=$((($(date +%s%N) - $ts)/1000000));
-echo "loaded in: $tt ms";
+####
+# End
+####
+tt=$((($(date +%s) - $ts)/1000000));
+echo "in '$tt' ms";
+
+cd $old_dir
