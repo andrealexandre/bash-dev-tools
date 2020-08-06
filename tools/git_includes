@@ -21,7 +21,7 @@ if [[ -z $(git config --global alias.xlog) ]] then;
 fi;
 
 # Alias for first push upstream
-if [[ -z $(git config --global alias.pushu) ]] then;
-    echo 'setting `git alias.pushu` for upstream push into origin';
-    git config --global alias.pushu '!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
+if [[ -z $(git config --global alias.upush) ]] then;
+    echo 'setting `git alias.upush` for upstream push into origin';
+    git config --global alias.upush '!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
 fi;

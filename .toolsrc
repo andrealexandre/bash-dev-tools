@@ -17,7 +17,7 @@ source tools/git_includes;
 ####
 # End
 ####
-tt=$((($(date +%s) - $ts)/1000000));
-echo "in '$tt' ms";
+tf=$(date +%s);
+echo "in '$((tf - ts))' ms";
 
 cd $old_dir
