@@ -6,7 +6,7 @@
 old_dir=`pwd`
 cd "$(dirname "$0")"
 
-echo -n "Loading 'andrealexandre/bash-dev-tools'... ";
+echo "Loading 'andrealexandre/bash-dev-tools'...";
 ts=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)');
 
 ####
@@ -18,6 +18,6 @@ source tools/git_includes;
 # End
 ####
 tf=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)');
-echo "in '$((tf - ts))' ms";
+echo "Loaded 'andrealexandre/bash-dev-tools' in '$((tf - ts))' ms";
 
 cd $old_dir
