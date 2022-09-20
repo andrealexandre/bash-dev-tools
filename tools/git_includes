@@ -13,6 +13,13 @@ if [[ -z $(git config --global alias.rebase-master) ]] then;
         git checkout master && git pull && git checkout $branch && git rebase master';
 fi;
 
+# Alias for extended git merge-master
+if [[ -z $(git config --global alias.merge-master) ]] then;
+    echo 'setting `git alias.merge-master` for rebase w/ master';
+    git config --global alias.merge-master '!branch=$(git rev-parse --abbrev-ref HEAD)
+        git checkout master && git pull && git checkout $branch && git merge master';
+fi;
+
 # Alias for extended git log
 if [[ -z $(git config --global alias.xlog) ]] then;
     echo 'setting `git alias.xlog` for extended log';

@@ -1,12 +1,16 @@
 #!/bin/bash
 
+LOADING_COLOR='\033[1;34m'
+LOADED_COLOR='\033[0;32m'
+NC='\033[0m' # No Color
+
+old_dir=$(pwd)
+cd $(dirname $(readlink $HOME/.toolsrc))
+
 ####
 # Begin
 ####
-old_dir=`pwd`
-cd "$(dirname "$0")"
-
-echo "Loading 'andrealexandre/bash-dev-tools'...";
+echo -ne "\r${LOADING_COLOR}Loading 'andrealexandre/bash-dev-tools'...${NC}";
 ts=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)');
 
 ####
@@ -18,6 +22,6 @@ source tools/git_includes;
 # End
 ####
 tf=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)');
-echo "Loaded 'andrealexandre/bash-dev-tools' in '$((tf - ts))' ms";
+echo -e "\r${LOADED_COLOR}Loaded 'andrealexandre/bash-dev-tools' in '$((tf - ts))' ms${NC}";
 
 cd $old_dir
