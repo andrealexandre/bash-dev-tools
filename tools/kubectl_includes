@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Alias for kubectl
+if [[ -z $(alias | grep kc) ]]; then
+    alias kc='kubectl';
+fi;

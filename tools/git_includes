@@ -6,18 +6,16 @@ if [[ -z $(git config --global alias.cleanup) ]] then;
     git config --global alias.cleanup '!git remote prune origin && git branch -vv | grep origin | grep gone | awk '"'"'{print $1}'"'"' | xargs -L 1 git branch -df';
 fi;
 
-# Alias for extended git rebase-master
-if [[ -z $(git config --global alias.rebase-master) ]] then;
-    echo 'setting `git alias.rebase-master` for rebase w/ master';
-    git config --global alias.rebase-master '!branch=$(git rev-parse --abbrev-ref HEAD)
-        git checkout master && git pull && git checkout $branch && git rebase master';
-fi;
+# Alias for extended git rebase-latest
+if [[ -z $(git config --global alias.rebase-latest) ]] then;
+    echo 'setting `git alias.rebase-latest` for rebase w/ any branch';
+    git config --global alias.rebase-latest '!f() { branch=${1:-master}; current=$(git rev-parse --abbrev-ref HEAD); if [ "$current" = "$branch" ]; then echo "Already on $branch branch. No need to rebase."; exit 0; fi; git checkout $branch && git pull && git checkout $current && git rebase $branch; }; f';
+fi
 
-# Alias for extended git merge-master
-if [[ -z $(git config --global alias.merge-master) ]] then;
-    echo 'setting `git alias.merge-master` for merge w/ master';
-    git config --global alias.merge-master '!branch=$(git rev-parse --abbrev-ref HEAD)
-        git checkout master && git pull && git checkout $branch && git merge master';
+# Alias for extended git merge-latest
+if [[ -z $(git config --global alias.merge-latest) ]] then;
+    echo 'setting `git alias.merge-latest` for merge w/ any branch';
+    git config --global alias.merge-latest '!f() { branch=${1:-master}; current=$(git rev-parse --abbrev-ref HEAD); if [ "$current" = "$branch" ]; then echo "Already on $branch branch. No need to merge."; exit 0; fi; git checkout $branch && git pull && git checkout $current && git merge $branch; }; f';
 fi;
 
 # Alias for extended git log

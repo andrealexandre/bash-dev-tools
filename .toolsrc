@@ -17,6 +17,7 @@ ts=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)');
 # Imports
 ####
 source tools/git_includes;
+source tools/kubectl_includes;
 
 ####
 # End
